@@ -1,0 +1,27 @@
+{
+  "name": "fastify-template",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && ts-node src/Server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//JT122406/Fastify-Template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "module": "ESNext",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/swagger": "^9.6.1",
+    "@fastify/swagger-ui": "^5.2.3",
+    "fastify": "^5.6.2"
+  }
+}
