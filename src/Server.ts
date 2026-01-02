@@ -74,7 +74,7 @@ const start: () => Promise<void> = async (): Promise<void> => {
     try {
         await app.listen({
             host: '0.0.0.0',
-            port: 3000
+            port: Number(process.env.PORT || 8080)
         })
     } catch (err) {
         process.exit(1)

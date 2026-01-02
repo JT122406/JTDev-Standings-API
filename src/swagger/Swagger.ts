@@ -14,7 +14,7 @@ const Swagger: (fastify: FastifyInstance) => Promise<void> = async (fastify: Fas
                 version: JSON.parse(await fs.readFile(new URL("../../package.json", import.meta.url), "utf-8")).version
             },
             servers: [
-                { url: 'http://localhost:3000', description: 'Localhost' }
+                { url: `http://${process.env.SWAGGER_HOST || 'localhost'}:${process.env.SWAGGER_PORT || '9443'}`, description: 'Localhost' }
             ]
         }
     });
