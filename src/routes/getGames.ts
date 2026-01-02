@@ -27,10 +27,10 @@ const getGames: (fastify: FastifyInstance, withConnection: WithConnection) => Pr
             }
         },
         async (): Promise<{ id: number, title: string}[]> => {
-        return withConnection(async (conn: Connection): Promise<{ id: number, title: string}[]> => {
-            return await conn.query('SELECT * FROM Games');
-        });
-    })
+            return withConnection(async (conn: Connection): Promise<{ id: number, title: string}[]> => {
+                return await conn.query('SELECT * FROM Games');
+            });
+        })
 }
 
 export default getGames;

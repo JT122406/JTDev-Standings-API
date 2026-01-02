@@ -6,6 +6,9 @@ import mariadb, {type Pool, type PoolConnection} from "mariadb";
 import 'dotenv/config';
 import getGames from "./routes/getGames.ts";
 import type {MariaConn, WithConnection} from "./types/types.ts";
+import getPlayers from "./routes/players/getPlayers.ts";
+import searchPlayer from "./routes/players/searchPlayer.ts";
+import addPlayer from "./routes/players/addPlayer.ts";
 
 declare module 'fastify' {
     interface FastifyInstance {
@@ -59,6 +62,9 @@ async function buildServer(): Promise<FastifyInstance> {
 
     await Swagger(fastify);
     await getGames(fastify, withConnection());
+    await getPlayers(fastify, withConnection());
+    await searchPlayer(fastify, withConnection());
+    await addPlayer(fastify, withConnection());
 
     return fastify;
 }
@@ -77,6 +83,7 @@ const start: () => Promise<void> = async (): Promise<void> => {
             port: Number(process.env.PORT || 8080)
         })
     } catch (err) {
+        fastify.log.error(err);
         process.exit(1)
     }
 }
