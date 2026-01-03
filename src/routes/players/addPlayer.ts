@@ -20,14 +20,13 @@ const addPlayer: (fastify: FastifyInstance, withConnection: WithConnection) => P
                     required: ['display_name']
                 },
                 response: {
-                    201:
-                        {
-                            type: 'object',
-                            properties: {
-                                id: { type: 'number' },
-                                message: { type: 'string' }
-                            }
+                    201: {
+                        type: 'object',
+                        properties: {
+                            id: { type: 'number' },
+                            message: { type: 'string' }
                         }
+                    }
                 }
             }
         },

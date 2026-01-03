@@ -9,6 +9,7 @@ import type {MariaConn, WithConnection} from "./types/types.ts";
 import getPlayers from "./routes/players/getPlayers.ts";
 import searchPlayer from "./routes/players/searchPlayer.ts";
 import addPlayer from "./routes/players/addPlayer.ts";
+import addMatch from "./routes/matches/addMatch.ts";
 
 declare module 'fastify' {
     interface FastifyInstance {
@@ -65,6 +66,7 @@ async function buildServer(): Promise<FastifyInstance> {
     await getPlayers(fastify, withConnection());
     await searchPlayer(fastify, withConnection());
     await addPlayer(fastify, withConnection());
+    await addMatch(fastify, withConnection());
 
     return fastify;
 }

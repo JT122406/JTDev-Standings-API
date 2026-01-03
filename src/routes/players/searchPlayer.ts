@@ -48,7 +48,7 @@ const searchPlayer: (fastify: FastifyInstance, withConnection: WithConnection) =
                     params.push(displayName);
                 }
 
-                const rows = await conn.query(query, params);
+                const rows: any[] = await conn.query(query, params);
 
                 return rows[0] || {};
             });
