@@ -1,12 +1,12 @@
 import type {Connection} from "mariadb";
 import type {FastifyInstance} from "fastify";
-import type {WithConnection} from "../types/types.ts";
+import type {WithConnection} from "../../types/types.ts";
 
 import '@fastify/swagger'
 
 
 const getGames: (fastify: FastifyInstance, withConnection: WithConnection) => Promise<void> = async(fastify: FastifyInstance, withConnection: WithConnection): Promise<void> => {
-    fastify.get('/getGames',
+    fastify.get('/games/getGames',
         {
             schema: {
                 tags: ['Games'],

@@ -4,12 +4,13 @@ import cors from '@fastify/cors';
 import Swagger from "./swagger/Swagger.ts";
 import mariadb, {type Pool, type PoolConnection} from "mariadb";
 import 'dotenv/config';
-import getGames from "./routes/getGames.ts";
+import getGames from "./routes/games/getGames.ts";
 import type {MariaConn, WithConnection} from "./types/types.ts";
 import getPlayers from "./routes/players/getPlayers.ts";
 import searchPlayer from "./routes/players/searchPlayer.ts";
 import addPlayer from "./routes/players/addPlayer.ts";
 import addMatch from "./routes/matches/addMatch.ts";
+import getGame from "./routes/games/getGame.ts";
 
 declare module 'fastify' {
     interface FastifyInstance {
@@ -63,6 +64,7 @@ async function buildServer(): Promise<FastifyInstance> {
 
     await Swagger(fastify);
     await getGames(fastify, withConnection());
+    await getGame(fastify, withConnection());
     await getPlayers(fastify, withConnection());
     await searchPlayer(fastify, withConnection());
     await addPlayer(fastify, withConnection());
